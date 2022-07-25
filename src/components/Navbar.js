@@ -9,6 +9,10 @@ const Navbar = () => {
     //      console.log(location.pathname);
     //  }, [location]);
 
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+    }
+
     return (
         <>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -27,7 +31,7 @@ const Navbar = () => {
                             </li>
                         </ul>
                     </div>
-                    <Link className="btn btn-lg btn-outline-danger" to="/" role="button">Logout</Link>
+                    <Link onClick={handleLogout} className="btn btn-lg btn-outline-danger" to="/" role="button">Logout</Link>
                 </div>
             </nav>
         </>
