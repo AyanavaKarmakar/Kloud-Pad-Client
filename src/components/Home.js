@@ -1,10 +1,13 @@
 import AddNote from './AddNote.js';
 import Notes from './Notes.js';
 
-const Home = () => {
+const Home = (props) => {
+
+    const { handleSetAlert } = props;
+
     return (
         <div>
-            <Notes />
+            <Notes handleSetAlert={handleSetAlert} />
         </div>
     )
 }

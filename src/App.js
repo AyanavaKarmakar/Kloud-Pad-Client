@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import Navbar from './components/Navbar';
 import Home from './components/Home';
@@ -9,6 +10,20 @@ import Login from "./components/Login";
 import Signup from "./components/Signup";
 
 function App() {
+
+  const [alert, setAlert] = useState(null);
+
+  const handleSetAlert = (message, type) => {
+    setAlert({
+      message: message,
+      type: type
+    });
+
+    setTimeout(() => {
+      handleSetAlert("", "");
+    }, 5000);
+  };
+
   return (
     <>
       <NoteState>
@@ -19,9 +34,9 @@ function App() {
             element={
               <>
                 <Navbar />
-                <Alert message="testing alert" />
+                <Alert alert={alert} />
                 <div className="container">
-                  <Home />
+                  <Home handleSetAlert={handleSetAlert} />
                 </div>
               </>
             }
@@ -31,7 +46,7 @@ function App() {
             element={
               <>
                 <Navbar />
-                <Alert message="testing alert" />
+                <Alert alert={alert} />
                 <div className="container">
                   <About />
                 </div>
@@ -43,7 +58,8 @@ function App() {
             element={
               <>
                 <div className="container">
-                  <Login />
+                  <Login handleSetAlert={handleSetAlert} />
+                  <Alert alert={alert} />
                 </div>
               </>
             }
@@ -53,7 +69,8 @@ function App() {
             element={
               <>
                 <div className="container">
-                  <Signup />
+                  <Signup handleSetAlert={handleSetAlert} />
+                  <Alert alert={alert} />
                 </div>
               </>
             }

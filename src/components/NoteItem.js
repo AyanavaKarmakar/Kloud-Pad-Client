@@ -20,7 +20,8 @@ const NoteItem = (props) => {
                         <button
                             className="unstyled-button"
                             onClick={() => {
-                                deleteNote(note._id)
+                                deleteNote(note._id);
+                                props.handleSetAlert("Note deleted successfully!", "success");
                             }}
                         >
                             <AiOutlineDelete className='mx-1' />
@@ -28,7 +29,7 @@ const NoteItem = (props) => {
                         <button
                             className="unstyled-button"
                             onClick={() => {
-                                updateNote(note)
+                                updateNote(note);
                             }}
                         >
                             <FiEdit className='mx-1' />
